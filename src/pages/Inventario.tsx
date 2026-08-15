@@ -30,7 +30,7 @@ export function Inventario() {
           </div>
           <Link
             to="/inventario/nuevo"
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold text-noir"
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold text-ivory"
           >
             <Plus size={22} />
           </Link>

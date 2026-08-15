@@ -21,7 +21,7 @@ export function NavInferior() {
             className={({ isActive }) =>
               `flex flex-1 flex-col items-center gap-1 rounded-xl py-2 text-[11px] transition ${
                 destacado
-                  ? 'text-noir'
+                  ? 'text-ivory'
                   : isActive
                     ? 'text-gold'
                     : 'text-ivory-dim'

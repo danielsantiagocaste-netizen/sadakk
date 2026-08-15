@@ -7,7 +7,7 @@ interface BotonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const estilos: Record<string, string> = {
   primario:
-    'bg-gold text-noir font-semibold hover:brightness-110 active:brightness-95',
+    'bg-gold text-ivory font-semibold hover:brightness-110 active:brightness-95',
   secundario:
     'bg-noir-3 text-ivory border border-line hover:bg-[#332e27]',
   fantasma:

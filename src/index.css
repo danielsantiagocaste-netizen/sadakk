@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  /* ---- Paleta SADAK: perfumería, cálida, nocturna ---- */
-  --color-noir: #151311;       /* fondo base, casi negro cálido */
-  --color-noir-2: #1F1C19;     /* tarjetas / superficies */
-  --color-noir-3: #29241F;     /* superficies elevadas / hover */
-  --color-line: #34302A;       /* bordes sutiles */
-  --color-ivory: #F3EEE4;      /* texto principal */
-  --color-ivory-dim: #B8AFA0;  /* texto secundario */
-  --color-gold: #C6A15B;       /* acento primario — bronce de frasco */
-  --color-gold-dim: #8C744A;
-  --color-wine: #7A2E3A;       /* alertas / pendiente */
-  --color-wine-soft: #2A1719;
-  --color-sage: #7C9070;       /* éxito / completo */
-  --color-sage-soft: #182018;
+  /* ---- Paleta SADAK: perfumería, clara, cálida, vívida ---- */
+  --color-noir: #FBF3E8;        /* fondo base — crema cálido */
+  --color-noir-2: #FFFFFF;      /* tarjetas / superficies */
+  --color-noir-3: #F5E7D3;      /* superficies elevadas (inputs) */
+  --color-line: #E9D6B8;        /* bordes cálidos */
+  --color-ivory: #2C2018;       /* texto principal — espresso oscuro */
+  --color-ivory-dim: #8A7561;   /* texto secundario */
+  --color-gold: #C4883A;        /* acento primario — ámbar vívido */
+  --color-gold-dim: #9C6B27;
+  --color-wine: #A23752;        /* alertas / pendiente — rosa vino vívido */
+  --color-wine-soft: #FBE4EA;
+  --color-sage: #4F7F4C;        /* éxito / completo — verde vívido */
+  --color-sage-soft: #E4F1DD;
 
   --font-display: 'Fraunces', serif;
   --font-body: 'Inter', system-ui, sans-serif;
@@ -42,22 +42,24 @@ h1, h2, h3, .font-display {
   font-variant-numeric: tabular-nums;
 }
 
-/* Textura sutil "vapor de spray" — usar con moderación, solo en header/login */
+/* Textura suave de acentos cálidos — usar en header */
 .mist {
-  background-image: radial-gradient(circle at 20% 20%, rgba(198,161,91,0.10), transparent 45%),
-    radial-gradient(circle at 80% 0%, rgba(122,46,58,0.12), transparent 50%);
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(196,136,58,0.14), transparent 45%),
+    radial-gradient(circle at 90% 30%, rgba(162,55,82,0.10), transparent 50%);
 }
 
-/* Fondo de "escena de perfumería": mármol oscuro veteado + luz cálida dorada,
-   inspirado en fotografía de producto de lujo, sin usar ninguna imagen ajena. */
+/* Fondo ilustrado de "escena de perfumería": crema cálido con luz dorada y
+   siluetas florales/botánicas sutiles, inspirado en fotografía de producto de
+   lujo — ilustración original, sin usar ninguna imagen ajena. */
 .escena-perfumeria {
-  background-color: #0E0D0B;
+  position: relative;
+  background-color: #FBF1E2;
   background-image:
-    radial-gradient(ellipse 650px 480px at 78% 12%, rgba(198,161,91,0.11), transparent 62%),
-    radial-gradient(ellipse 480px 380px at 10% 90%, rgba(122,46,58,0.08), transparent 58%),
-    repeating-linear-gradient(100deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 14px),
-    repeating-linear-gradient(15deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 22px),
-    linear-gradient(160deg, #15130F 0%, #0E0D0B 55%, #0A0908 100%);
+    radial-gradient(ellipse 620px 460px at 82% 8%, rgba(196,136,58,0.28), transparent 60%),
+    radial-gradient(ellipse 520px 420px at 6% 96%, rgba(162,55,82,0.16), transparent 58%),
+    radial-gradient(ellipse 900px 700px at 50% 50%, rgba(255,251,244,0.6), transparent 70%),
+    linear-gradient(160deg, #FDF6EA 0%, #F8ECD8 55%, #F3E4CB 100%);
 }
 
 ::-webkit-scrollbar { width: 8px; height: 8px; }

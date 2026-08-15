@@ -112,7 +112,7 @@ export function FormularioPerfume({ perfumeInicial, onGuardar, textoBoton }: For
                   onClick={() => setMargen(m)}
                   className={`flex-1 rounded-xl border py-2.5 text-sm transition ${
                     margen === m
-                      ? 'border-gold bg-gold text-noir font-semibold'
+                      ? 'border-gold bg-gold text-ivory font-semibold'
                       : 'border-line bg-noir-3 text-ivory-dim'
                   }`}
                 >

@@ -87,7 +87,7 @@ export function DetalleVenta() {
             {venta.estado === 'pendiente' && (
               <Link
                 to={`/ventas/${venta.id}/abono`}
-                className="flex items-center gap-1 rounded-full bg-gold px-3 py-1.5 text-xs font-medium text-noir"
+                className="flex items-center gap-1 rounded-full bg-gold px-3 py-1.5 text-xs font-medium text-ivory"
               >
                 <Plus size={14} /> Registrar abono
               </Link>

@@ -98,7 +98,7 @@ export function SelectorCliente({ seleccionado, onSeleccionar }: SelectorCliente
             type="button"
             disabled={creando}
             onClick={manejarCrear}
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-gold py-2.5 text-sm font-medium text-noir disabled:opacity-50"
+            className="flex w-full items-center justify-center gap-2 rounded-lg bg-gold py-2.5 text-sm font-medium text-ivory disabled:opacity-50"
           >
             <UserPlus size={16} /> Crear "{busqueda.trim()}"
           </button>

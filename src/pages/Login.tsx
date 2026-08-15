@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { Campo } from '../components/ui/Campo'
 import { Boton } from '../components/ui/Boton'
-import logoSadak from '../assets/logo-sadak.png'
+import marcaSadak from '../assets/marca-sadak.png'
 
 export function Login() {
   const { iniciarSesion } = useAuth()
@@ -25,11 +25,13 @@ export function Login() {
       <div className="w-full max-w-sm">
         <div className="mb-10 flex flex-col items-center text-center">
           <img
-            src={logoSadak}
-            alt="SADAK Parfum"
-            className="mb-5 h-24 w-auto rounded-2xl shadow-lg shadow-black/40"
+            src={marcaSadak}
+            alt="SADAK"
+            className="mb-5 h-24 w-24 rounded-3xl shadow-lg shadow-gold/20"
           />
-          <p className="text-sm text-ivory-dim">Control interno de inventario y ventas</p>
+          <h1 className="font-display italic text-4xl text-ivory">Sadak</h1>
+          <p className="text-xs uppercase tracking-[0.3em] text-gold mt-1">Parfum</p>
+          <p className="text-sm text-ivory-dim mt-4">Control interno de inventario y ventas</p>
         </div>
 
         <form onSubmit={manejarEnvio} className="flex flex-col gap-4">
