@@ -5,6 +5,7 @@ import { Login } from './pages/Login'
 import { Dashboard } from './pages/Dashboard'
 import { Inventario } from './pages/Inventario'
 import { AgregarPerfume } from './pages/AgregarPerfume'
+import { CatalogoPerfumes } from './pages/CatalogoPerfumes'
 import { DetallePerfume } from './pages/DetallePerfume'
 import { NuevaVenta } from './pages/NuevaVenta'
 import { DetalleVenta } from './pages/DetalleVenta'
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/" element={<RutaProtegida><Dashboard /></RutaProtegida>} />
           <Route path="/inventario" element={<RutaProtegida><Inventario /></RutaProtegida>} />
           <Route path="/inventario/nuevo" element={<RutaProtegida><AgregarPerfume /></RutaProtegida>} />
+          <Route path="/inventario/catalogo" element={<RutaProtegida><CatalogoPerfumes /></RutaProtegida>} />
           <Route path="/inventario/:id" element={<RutaProtegida><DetallePerfume /></RutaProtegida>} />
           <Route path="/ventas/nueva" element={<RutaProtegida><NuevaVenta /></RutaProtegida>} />
           <Route path="/ventas/:id/abono" element={<RutaProtegida><RegistrarAbono /></RutaProtegida>} />

@@ -10,13 +10,15 @@ const MARGENES_RAPIDOS = [30, 40, 50, 60];
 
 interface FormularioPerfumeProps {
   perfumeInicial?: Perfume
+  nombreInicial?: string
+  marcaInicial?: string
   onGuardar: (datos: DatosNuevoPerfume) => Promise<{ error: string | null }>
   textoBoton: string
 }
 
-export function FormularioPerfume({ perfumeInicial, onGuardar, textoBoton }: FormularioPerfumeProps) {
-  const [nombre, setNombre] = useState(perfumeInicial?.nombre ?? '')
-  const [marca, setMarca] = useState(perfumeInicial?.marca ?? '')
+export function FormularioPerfume({ perfumeInicial, nombreInicial, marcaInicial, onGuardar, textoBoton }: FormularioPerfumeProps) {
+  const [nombre, setNombre] = useState(perfumeInicial?.nombre ?? nombreInicial ?? '')
+  const [marca, setMarca] = useState(perfumeInicial?.marca ?? marcaInicial ?? '')
   const [costo, setCosto] = useState(perfumeInicial?.costo?.toString() ?? '')
   const [margen, setMargen] = useState(perfumeInicial?.porcentaje_ganancia ?? 50)
   const [precioManualActivo, setPrecioManualActivo] = useState(perfumeInicial?.precio_manual ?? false)

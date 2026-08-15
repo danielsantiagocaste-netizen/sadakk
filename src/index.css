@@ -49,17 +49,14 @@ h1, h2, h3, .font-display {
     radial-gradient(circle at 90% 30%, rgba(162,55,82,0.10), transparent 50%);
 }
 
-/* Fondo ilustrado de "escena de perfumería": crema cálido con luz dorada y
-   siluetas florales/botánicas sutiles, inspirado en fotografía de producto de
-   lujo — ilustración original, sin usar ninguna imagen ajena. */
+/* Fondo de "escena de perfumería": imagen editorial original (marca de agua
+   del emblema SADAK sobre degradado cálido y bokeh dorado) — ilustración
+   propia, sin usar ninguna imagen ajena. */
 .escena-perfumeria {
   position: relative;
-  background-color: #FBF1E2;
-  background-image:
-    radial-gradient(ellipse 620px 460px at 82% 8%, rgba(196,136,58,0.28), transparent 60%),
-    radial-gradient(ellipse 520px 420px at 6% 96%, rgba(162,55,82,0.16), transparent 58%),
-    radial-gradient(ellipse 900px 700px at 50% 50%, rgba(255,251,244,0.6), transparent 70%),
-    linear-gradient(160deg, #FDF6EA 0%, #F8ECD8 55%, #F3E4CB 100%);
+  background-image: url('./assets/escena-editorial.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 ::-webkit-scrollbar { width: 8px; height: 8px; }
