@@ -1,9 +1,10 @@
-import { Link, useParams } from 'react-router-dom'
-import { Plus } from 'lucide-react'
+import { useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Plus, Trash2 } from 'lucide-react'
 import { EncabezadoAtras } from '../components/layout/EncabezadoAtras'
 import { Tarjeta } from '../components/ui/Tarjeta'
 import { InsigniaEstado } from '../components/ventas/InsigniaEstado'
-import { useVentaDetalle } from '../hooks/useVentas'
+import { useVentaDetalle, useVentas } from '../hooks/useVentas'
 import { useAbonos } from '../hooks/useAbonos'
 import { formatoPesos, formatoFecha, formatoFechaHora } from '../lib/formatos'
 
@@ -11,6 +12,10 @@ export function DetalleVenta() {
   const { id } = useParams<{ id: string }>()
   const { venta, cargando, error } = useVentaDetalle(id)
   const { abonos, cargando: cargandoAbonos } = useAbonos(id)
+  const { eliminarVenta } = useVentas()
+  const navegar = useNavigate()
+  const [eliminando, setEliminando] = useState(false)
+  const [errorEliminar, setErrorEliminar] = useState<string | null>(null)
 
   if (cargando) {
     return (
@@ -31,6 +36,28 @@ export function DetalleVenta() {
   }
 
   const metodoLabel = venta.metodo_pago === 'efectivo' ? 'Efectivo' : 'Transferencia'
+
+  async function manejarEliminar() {
+    if (!id || !venta) return
+
+    const advertencia =
+      venta.total_abonado > 0
+        ? `Esta venta tiene ${formatoPesos(venta.total_abonado)} en abonos registrados. Al eliminarla se borran también esos abonos, y las ${venta.cantidad} unidades de "${venta.perfume_nombre}" vuelven al inventario. Esta acción no se puede deshacer. ¿Continuar?`
+        : `Las ${venta.cantidad} unidades de "${venta.perfume_nombre}" volverán al inventario. Esta acción no se puede deshacer. ¿Continuar?`
+
+    if (!window.confirm(advertencia)) return
+
+    setEliminando(true)
+    setErrorEliminar(null)
+    const { error } = await eliminarVenta(id)
+    setEliminando(false)
+
+    if (error) {
+      setErrorEliminar(error)
+      return
+    }
+    navegar('/ventas')
+  }
 
   return (
     <div>
@@ -125,6 +152,20 @@ export function DetalleVenta() {
             Esta venta está completamente pagada.
           </div>
         )}
+
+        {errorEliminar && (
+          <p className="rounded-xl border border-wine bg-wine-soft px-4 py-3 text-sm text-ivory">
+            {errorEliminar}
+          </p>
+        )}
+
+        <button
+          onClick={manejarEliminar}
+          disabled={eliminando}
+          className="flex w-full items-center justify-center gap-2 rounded-xl border border-wine/50 py-3.5 text-sm text-wine disabled:opacity-50"
+        >
+          <Trash2 size={16} /> {eliminando ? 'Eliminando…' : 'Eliminar venta'}
+        </button>
       </div>
     </div>
   )

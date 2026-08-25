@@ -59,7 +59,16 @@ export function useVentas() {
     return { venta: ventaCreada, error: null }
   }
 
-  return { crearVenta }
+  async function eliminarVenta(id: string) {
+    // Al eliminar la venta, la base de datos automáticamente:
+    // - borra sus abonos (ON DELETE CASCADE)
+    // - devuelve el stock del perfume (trigger trg_venta_eliminada)
+    const { error } = await supabase.from('ventas').delete().eq('id', id)
+    if (error) return { error: error.message }
+    return { error: null }
+  }
+
+  return { crearVenta, eliminarVenta }
 }
 
 export function useVentaDetalle(id: string | undefined) {
