@@ -15,6 +15,7 @@ import { Clientes } from './pages/Clientes'
 import { DetalleCliente } from './pages/DetalleCliente'
 import { Ganancias } from './pages/Ganancias'
 import { PanelDueno } from './pages/PanelDueno'
+import { Asistente } from './pages/Asistente'
 import { Mas } from './pages/Mas'
 
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/clientes/:id" element={<RutaProtegida><DetalleCliente /></RutaProtegida>} />
           <Route path="/ganancias" element={<RutaProtegida><Ganancias /></RutaProtegida>} />
           <Route path="/panel-dueno" element={<RutaProtegida><PanelDueno /></RutaProtegida>} />
+          <Route path="/asistente" element={<RutaProtegida><Asistente /></RutaProtegida>} />
           <Route path="/mas" element={<RutaProtegida><Mas /></RutaProtegida>} />
         </Routes>
       </BrowserRouter>

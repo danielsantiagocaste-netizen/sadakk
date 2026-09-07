@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
-import { Users, TrendingUp, ShieldCheck, LogOut, ChevronRight } from 'lucide-react'
+import { Users, TrendingUp, ShieldCheck, LogOut, ChevronRight, MessageCircle } from 'lucide-react'
 import { Encabezado } from '../components/layout/Encabezado'
 import { useAuth } from '../hooks/useAuth'
 
 const enlaces = [
+  { to: '/asistente', etiqueta: 'Asistente', icono: MessageCircle, descripcion: 'Pregunta por precios, stock o ventas' },
   { to: '/clientes', etiqueta: 'Clientes', icono: Users, descripcion: 'Historial y saldos por cliente' },
   { to: '/ganancias', etiqueta: 'Ganancias', icono: TrendingUp, descripcion: 'Ventas, costos y ganancia del negocio' },
   { to: '/panel-dueno', etiqueta: 'Panel del dueño', icono: ShieldCheck, descripcion: 'Estadísticas y administración' },
