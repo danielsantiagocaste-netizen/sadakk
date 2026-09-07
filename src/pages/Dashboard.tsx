@@ -12,7 +12,7 @@ export function Dashboard() {
 
   return (
     <div>
-      <Encabezado titulo="Inicio" subtitulo="Resumen del negocio" />
+      <Encabezado titulo="Inicio" subtitulo="Resumen general del negocio" />
 
       <div className="p-5 flex flex-col gap-6">
         <AccesosRapidos />
@@ -37,10 +37,9 @@ export function Dashboard() {
 
             <div>
               <p className="mb-3 font-display text-lg text-ivory">Ventas</p>
-              <Tarjeta className="grid grid-cols-3 gap-4">
-                <Estadistica etiqueta="Hoy" valor={String(datos.ventasHoy)} destacado tono="gold" />
-                <Estadistica etiqueta="Este mes" valor={String(datos.ventasMes)} destacado />
-                <Estadistica etiqueta="Perfumes vendidos" valor={String(datos.perfumesVendidosMes)} destacado />
+              <Tarjeta className="grid grid-cols-2 gap-4">
+                <Estadistica etiqueta="Ventas totales" valor={String(datos.ventasTotales)} destacado tono="gold" />
+                <Estadistica etiqueta="Perfumes vendidos" valor={String(datos.perfumesVendidosTotal)} destacado />
               </Tarjeta>
             </div>
 
@@ -48,25 +47,24 @@ export function Dashboard() {
               <p className="mb-3 font-display text-lg text-ivory">Dinero</p>
               <Tarjeta className="flex flex-col gap-3">
                 <div className="flex justify-between">
-                  <span className="text-sm text-ivory-dim">Total vendido (mes)</span>
-                  <span className="tabular text-ivory">{formatoPesos(datos.totalVendidoMes)}</span>
+                  <span className="text-sm text-ivory-dim">Total vendido</span>
+                  <span className="tabular text-ivory">{formatoPesos(datos.totalVendido)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm text-ivory-dim">Total cobrado (mes)</span>
-                  <span className="tabular text-sage">{formatoPesos(datos.totalCobradoMes)}</span>
+                  <span className="text-sm text-ivory-dim">Total cobrado</span>
+                  <span className="tabular text-sage">{formatoPesos(datos.totalCobrado)}</span>
                 </div>
                 <div className="flex justify-between border-t border-line pt-3">
                   <span className="text-sm text-ivory-dim">Pendiente por cobrar</span>
-                  <span className="tabular font-medium text-gold">{formatoPesos(datos.pendienteCobrarMes)}</span>
+                  <span className="tabular font-medium text-gold">{formatoPesos(datos.pendienteCobrar)}</span>
                 </div>
               </Tarjeta>
             </div>
 
             <div>
               <p className="mb-3 font-display text-lg text-ivory">Ganancias</p>
-              <Tarjeta className="grid grid-cols-2 gap-4">
-                <Estadistica etiqueta="Ganancia del día" valor={formatoPesos(datos.gananciaHoy)} destacado tono="sage" />
-                <Estadistica etiqueta="Ganancia del mes" valor={formatoPesos(datos.gananciaMes)} destacado tono="sage" />
+              <Tarjeta>
+                <Estadistica etiqueta="Ganancia total" valor={formatoPesos(datos.gananciaTotal)} destacado tono="sage" />
               </Tarjeta>
             </div>
 
@@ -82,6 +80,11 @@ export function Dashboard() {
                 />
               </Tarjeta>
             </div>
+
+            <p className="text-center text-xs text-ivory-dim px-4">
+              Estos totales son de todo el histórico de SADAK. Si quieres ver el detalle por periodo (hoy, esta
+              semana, este mes), entra a "Más → Ganancias".
+            </p>
           </>
         )}
       </div>

@@ -2,17 +2,20 @@ import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import type { VentaDetalle } from '../types/database'
 
-export type PeriodoGanancias = 'hoy' | 'semana' | 'mes' | 'personalizado'
+export type PeriodoGanancias = 'todo' | 'hoy' | 'semana' | 'mes' | 'personalizado'
 
 export interface RangoFechas {
   desde: string // yyyy-mm-dd
   hasta: string // yyyy-mm-dd
 }
 
-export function calcularRango(periodo: PeriodoGanancias, personalizado: RangoFechas): RangoFechas {
+export function calcularRango(periodo: PeriodoGanancias, personalizado: RangoFechas): RangoFechas | null {
   const hoy = new Date()
   const fmt = (d: Date) => d.toISOString().slice(0, 10)
 
+  if (periodo === 'todo') {
+    return null // sin filtro de fecha: trae todo el histórico
+  }
   if (periodo === 'hoy') {
     return { desde: fmt(hoy), hasta: fmt(hoy) }
   }
@@ -37,18 +40,18 @@ export interface ResumenGanancias {
   numeroVentas: number
 }
 
-export function useGanancias(rango: RangoFechas) {
+export function useGanancias(rango: RangoFechas | null) {
   const [resumen, setResumen] = useState<ResumenGanancias | null>(null)
   const [cargando, setCargando] = useState(true)
 
   useEffect(() => {
     async function cargar() {
       setCargando(true)
-      const { data } = await supabase
-        .from('vista_ventas_detalle')
-        .select('*')
-        .gte('fecha', rango.desde)
-        .lte('fecha', rango.hasta + 'T23:59:59')
+      let query = supabase.from('vista_ventas_detalle').select('*')
+      if (rango) {
+        query = query.gte('fecha', rango.desde).lte('fecha', rango.hasta + 'T23:59:59')
+      }
+      const { data } = await query
 
       const ventas = (data ?? []) as unknown as VentaDetalle[]
 
@@ -63,7 +66,7 @@ export function useGanancias(rango: RangoFechas) {
       setCargando(false)
     }
     cargar()
-  }, [rango.desde, rango.hasta])
+  }, [rango?.desde, rango?.hasta])
 
   return { resumen, cargando }
 }

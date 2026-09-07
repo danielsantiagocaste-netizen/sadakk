@@ -5,6 +5,7 @@ import { useGanancias, calcularRango, type PeriodoGanancias, type RangoFechas } 
 import { formatoPesos } from '../lib/formatos'
 
 const PERIODOS: { id: PeriodoGanancias; etiqueta: string }[] = [
+  { id: 'todo', etiqueta: 'Todo' },
   { id: 'hoy', etiqueta: 'Hoy' },
   { id: 'semana', etiqueta: 'Esta semana' },
   { id: 'mes', etiqueta: 'Este mes' },
@@ -16,7 +17,7 @@ function hoyISO() {
 }
 
 export function Ganancias() {
-  const [periodo, setPeriodo] = useState<PeriodoGanancias>('mes')
+  const [periodo, setPeriodo] = useState<PeriodoGanancias>('todo')
   const [personalizado, setPersonalizado] = useState<RangoFechas>({ desde: hoyISO(), hasta: hoyISO() })
 
   const rango = calcularRango(periodo, personalizado)
@@ -68,7 +69,9 @@ export function Ganancias() {
         {resumen && (
           <>
             <Tarjeta className="text-center">
-              <p className="text-xs text-ivory-dim">Ganancia del periodo</p>
+              <p className="text-xs text-ivory-dim">
+                {periodo === 'todo' ? 'Ganancia general (todo el histórico)' : 'Ganancia del periodo'}
+              </p>
               <p className="tabular font-display text-4xl text-sage mt-1">{formatoPesos(resumen.gananciaTotal)}</p>
               <p className="text-xs text-ivory-dim mt-1">{resumen.numeroVentas} ventas</p>
             </Tarjeta>
